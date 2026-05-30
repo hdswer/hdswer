@@ -1,0 +1,8 @@
+{
+  "name": "八曜茶飲點單系統",
+  "description": "基於八曜和茶菜單建立的精緻茶飲點單系統，支援顧客前台自助選購、自訂甜度冰量加料，以及管理員後台密碼管制、菜單管理、訂單追蹤與銷售數據分析。",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
