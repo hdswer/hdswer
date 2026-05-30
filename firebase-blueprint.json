@@ -1,0 +1,107 @@
+{
+  "entities": {
+    "AdminConfig": {
+      "title": "AdminConfig",
+      "description": "Configuration settings for the administrators, such as the system security password.",
+      "type": "object",
+      "properties": {
+        "password": {
+          "type": "string",
+          "description": "The hashed or salt-verified master admin password stored for validation check."
+        },
+        "isSetup": {
+          "type": "boolean",
+          "description": "Indicator of whether the admin password has already been set up."
+        }
+      },
+      "required": ["password", "isSetup"]
+    },
+    "MenuItem": {
+      "title": "MenuItem",
+      "description": "A single tea drink offering in the tea shop menu.",
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Name of the tea drink."
+        },
+        "category": {
+          "type": "string",
+          "description": "Category folder: 和風茶, 自然茶, 鮮乳配製, 厚奶茶, 極上白奶茶, 乳酸樂多 etc."
+        },
+        "priceM": {
+          "type": "integer",
+          "description": "Price for medium-size."
+        },
+        "priceL": {
+          "type": "integer",
+          "description": "Price for large-size."
+        },
+        "available": {
+          "type": "boolean",
+          "description": "Status representing whether the drink is currently in stock."
+        },
+        "description": {
+          "type": "string",
+          "description": "Description of ingredients or tea profile."
+        }
+      },
+      "required": ["name", "category", "priceM", "priceL", "available"]
+    },
+    "Order": {
+      "title": "Order",
+      "description": "An order placed by a customer containing list of individual items.",
+      "type": "object",
+      "properties": {
+        "orderNum": {
+          "type": "string",
+          "description": "Human-friendly unique incremental order serial number (e.g., #1001)."
+        },
+        "customerName": {
+          "type": "string",
+          "description": "Name of the customer placing this order."
+        },
+        "customerPhone": {
+          "type": "string",
+          "description": "Contact number of the customer."
+        },
+        "items": {
+          "type": "array",
+          "description": "Selected customized drink items."
+        },
+        "totalPrice": {
+          "type": "integer",
+          "description": "Total checkout price in NTD."
+        },
+        "status": {
+          "type": "string",
+          "description": "Order status: pending, preparing, completed, cancelled."
+        },
+        "notes": {
+          "type": "string",
+          "description": "Optional notes from customer."
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Creation timestamp."
+        }
+      },
+      "required": ["orderNum", "customerName", "customerPhone", "items", "totalPrice", "status", "createdAt"]
+    }
+  },
+  "firestore": {
+    "configs/{configId}": {
+      "schema": "AdminConfig",
+      "description": "Global administration parameters and access controls."
+    },
+    "menu/{menuId}": {
+      "schema": "MenuItem",
+      "description": "Stores the dynamic offerings list managed by administration."
+    },
+    "orders/{orderId}": {
+      "schema": "Order",
+      "description": "Tracks incoming visitor ordering pipelines."
+    }
+  }
+}
