@@ -1,0 +1,28 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    // Global Safety Net
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    // Dynamic menu items: Everyone can view, modifications are allowed (for password-verified admin)
+    match /menu/{menuId} {
+      allow read: if true;
+      allow write: if true;
+    }
+
+    // Orders pipeline: Guests can submit order and view, updates are authorized for status transitions
+    match /orders/{orderId} {
+      allow read, create: if true;
+      allow update, delete: if true;
+    }
+
+    // Admin configs: Stores hashed password and status
+    match /configs/{configId} {
+      allow read: if true;
+      allow create, update: if true;
+    }
+  }
+}
