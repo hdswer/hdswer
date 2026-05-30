@@ -1,0 +1,37 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+TC:wght@300;400;500;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", "Noto Sans TC", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+
+  /* Custom brand color scheme representing 八曜和茶: Warm earth tones, forest green accents, refined gold */
+  --color-brand-green: #3a5340;
+  --color-brand-yellow: #f0c343;
+  --color-brand-clay: #d66a4e;
+  --color-brand-cream: #faf7f0;
+  --color-brand-charcoal: #2a2a2a;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: #faf9f6;
+  color: var(--color-brand-charcoal);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Custom scrollbars for a highly-refined user interface */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
